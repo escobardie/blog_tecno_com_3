@@ -1,0 +1,160 @@
+{% load static %}
+
+            <!-- Sidebar Start -->
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <!-- Search Form Start -->
+                <div class="mb-5">
+                    <div class="bg-secondary" style="padding: 30px;">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-0 p-4" placeholder="Articulo">
+                            <div class="input-group-append">
+                                <span class="input-group-text bg-primary border-primary text-white"><i
+                                        class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Search Form End -->
+
+                <!-- Category Start -->
+                <div class="mb-5">
+                    <h3 class="mb-4">Categorias</h3>
+                    <div class="bg-secondary" style="padding: 30px;">
+                        <ul class="list-inline m-0">
+                            {% for categoria in categorias %}
+                                <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
+                                    <a class="text-dark" href="{% url 'categoria' categoria_slug=categoria.slug%}"><i class="fa fa-angle-right text-primary mr-2"></i>{{ categoria }}</a>
+                                    <!--<span class="badge badge-secondary badge-pill">150</span>-->
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- Category End -->
+                <!-- About Start -->
+                <div class="mb-5">
+                    <h3 class="mb-4">Acerca de</h3>
+                    <div class="bg-secondary" style="padding: 30px;">
+                        <ul class="list-inline m-0">
+                            <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
+                                <a class="text-dark" >{{ acerca }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- About End -->
+                <!-- Plain Text Start -->
+                <div class="mb-5">
+                    <h3 class="mb-4">Acerca de</h3>
+                    <div class="bg-secondary text-center" style="padding: 30px;">
+                        <p>{{ acerca }}</p>
+                        <!-- <a href="" class="btn btn-primary py-2 px-4">Read More</a> -->
+                    </div>
+                </div>
+                <!-- Plain Text End -->
+
+                <!-- ARCHIVOS Start -->
+                <div class="mb-5">
+                    <h3 class="mb-4">Archivos</h3>
+                    <div class="bg-secondary" style="padding: 30px;">
+                        <ul class="list-inline m-0">
+                            {% for archivo in archivos %}
+
+                            <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
+                                <a class="text-dark" href="{% url 'archivo' year=archivo.fecha.year month=archivo.fecha.month %}"><i class="fa fa-angle-right text-primary mr-2"></i>{{archivo.mes_letra}} de {{archivo.fecha.year}}</a>
+                            </li>
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- About End -->
+
+
+                <!-- Recent Post Start -->
+                <div class="mb-5">
+                    <h3 class="mb-4">Post Recientes</h3>
+                    {% for articulo in articulos %}
+                    
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src= {{ articulo.imagen.url }} style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <a href={% url 'articulo' articulo_slug=articulo.slug %} class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
+                            {{ articulo.titulo }}
+                        </a>
+                    </div>
+
+                    {% empty %}
+                        <h4 class="font-weight-bold mb-3">No hay registros</h4>
+                    {% endfor %}
+
+                    <!--
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src={% static 'blog_plantilla/img/blog-1.jpg' %} style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
+                            Pequeña Descripcion.. Sobre este articulo en particular..
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src={% static 'blog_plantilla/img/blog-2.jpg' %} style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
+                            Pequeña Descripcion.. Sobre este articulo en particular..
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src={% static 'blog_plantilla/img/blog-1.jpg' %} style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
+                            Pequeña Descripcion.. Sobre este articulo en particular..
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src={% static 'blog_plantilla/img/blog-2.jpg' %} style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
+                            Pequeña Descripcion.. Sobre este articulo en particular..
+                        </a>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img class="img-fluid" src={% static 'blog_plantilla/img/blog-1.jpg' %} style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                        <a href="" class="d-flex align-items-center bg-secondary text-dark text-decoration-none px-3" style="height: 80px;">
+                            Pequeña Descripcion.. Sobre este articulo en particular..
+                        </a>
+                    </div>-->
+                </div>
+                <!-- Recent Post End -->
+
+                <!-- Image Start 
+                <div class="mb-5">
+                    <img src={% static 'blog_plantilla/img/blog-1.jpg' %} alt="" class="img-fluid">
+                </div>-->
+                <!-- Image End -->
+
+                <!-- Tags Start 
+                <div class="mb-5">
+                    <h3 class="mb-4">Bloque Etiquetas</h3>
+                    <div class="d-flex flex-wrap m-n1">
+                        <a href="" class="btn btn-secondary m-1">Design</a>
+                        <a href="" class="btn btn-secondary m-1">Development</a>
+                        <a href="" class="btn btn-secondary m-1">Marketing</a>
+                        <a href="" class="btn btn-secondary m-1">SEO</a>
+                        <a href="" class="btn btn-secondary m-1">Writing</a>
+                        <a href="" class="btn btn-secondary m-1">Consulting</a>
+                    </div>
+                </div>-->
+                <!-- Tags End -->
+
+                <!-- Image Start 
+                <div class="mb-5">
+                    <img src={% static 'blog_plantilla/img/blog-2.jpg' %} alt="" class="img-fluid">
+                </div> -->
+                <!-- Image End -->
+
+                <!-- Plain Text Start 
+                <div>
+                    <h3 class="mb-4">Plain Text</h3>
+                    <div class="bg-secondary text-center" style="padding: 30px;">
+                        <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>
+                        <a href="" class="btn btn-primary py-2 px-4">Read More</a>
+                    </div>
+                </div>-->
+                <!-- Plain Text End -->
+            </div>
+            <!-- Sidebar End -->

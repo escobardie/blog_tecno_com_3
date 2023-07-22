@@ -1,0 +1,28 @@
+{% extends 'blog_plantilla/base.html' %}
+{% load static %}
+{% block navegador %}
+<a href={% url 'apps.posts:inicio' %} class="nav-item nav-link ">Inicio</a>
+<a href={% url 'apps.posts:blog' %} class="nav-item nav-link ">Blog</a>
+<a href={% url 'apps.posts:about' %} class="nav-item nav-link">Nosotros</a>
+<a href={% url 'apps.contacto:contacto' %} class="nav-item nav-link active">Contacto</a>
+{% endblock navegador %}
+
+
+{% block contenedor %}
+<center>
+    <form method="POST" style="margin: 200px;">
+        <h1>FORMULARIO CONTACTO</h1>
+        <br>
+        {% if messages %}
+            {% for message in messages %}
+                <div class='message {{ message.tags }}'>{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <input type="submit" value="Enviar">
+    </form>
+</center>
+{% endblock contenedor %}
