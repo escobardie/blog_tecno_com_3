@@ -10,7 +10,7 @@ from . import models
 class NotFoundView(TemplateView):
     template_name = "blog/404.html"
 
-
+## INICIO
 class InicioView(ListView):
     model: models.Articulo
     template_name = 'blog/inicio.html'
@@ -18,7 +18,7 @@ class InicioView(ListView):
     paginate_by = 3
     queryset = models.Articulo.objects.filter(publicado=True)
     
-################################
+################################################################
 class About(TemplateView):
     template_name = "blog/about.html"
     context_object_name = 'about'
@@ -27,12 +27,16 @@ class Contacto(TemplateView):
     template_name = "blog/contacto.html"
     context_object_name = 'contacto'
 
+################################################################
 # class ArticuloMin(ListView):
 #     model = models.Articulo
-#     template_name = 'blog/articulo.html'
-#     context_object_name = 'mini_articulos'
-################################
+#     template_name = 'blog/inicio.html'
+#     context_object_name = 'articulos'
+#     paginate_by = 3
+#     queryset = models.Articulo.objects.filter(publicado=True)
+################################################################
 
+## DETALLE DE ARTIOCULO
 class ArticuloDetailView(DetailView):
     model = models.Articulo
     template_name = 'blog/articulo.html'
@@ -40,7 +44,7 @@ class ArticuloDetailView(DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'articulo_slug'
 
-
+## FILTRADO DE ARTICULOS POR CATEGORIA
 class ArticulosByCategoriaView(ListView):
     model = models.Categoria
     template_name = 'blog/categoria.html'
@@ -59,7 +63,7 @@ class ArticulosByCategoriaView(ListView):
             slug=self.kwargs['categoria_slug'])
         return context
 
-
+## FILTRADO ARTICULOS POR AUTOR
 class ArticulosByAutorView(ListView):
     model = User
     template_name = 'blog/autor.html'
@@ -76,7 +80,7 @@ class ArticulosByAutorView(ListView):
         context['autor'] = User.objects.get(username=self.kwargs['autor'])
         return context
 
-
+## FILTRADO DE ARTICULOS POR FECHA AÑO
 class ArticulosByArchivoViews(YearArchiveView):
     model = models.Articulo
     template_name = 'blog/archivo.html'

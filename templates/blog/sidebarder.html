@@ -61,14 +61,14 @@
                             {% for archivo in archivos %}
 
                             <li class="mb-1 py-2 px-3 bg-light d-flex justify-content-between align-items-center">
-                                <a class="text-dark" href="{% url 'archivo' year=archivo.fecha.year month=archivo.fecha.month %}"><i class="fa fa-angle-right text-primary mr-2"></i>{{archivo.mes_letra}} de {{archivo.fecha.year}}</a>
+                                <a class="text-dark" href={% url 'archivo' year=archivo.fecha.year month=archivo.fecha.month %}><i class="fa fa-angle-right text-primary mr-2"></i>{{archivo.mes_letra}} de {{archivo.fecha.year}}</a>
                             </li>
 
                             {% endfor %}
                         </ul>
                     </div>
                 </div>
-                <!-- About End -->
+                <!-- ARCHIVOS End -->
 
 
                 <!-- Recent Post Start -->
