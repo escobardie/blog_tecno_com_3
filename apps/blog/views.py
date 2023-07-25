@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, ListView, DetailView
-from django.views.generic.dates import YearArchiveView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import TemplateView, ListView, DetailView, YearArchiveView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
-from . import models
+from . import models, form
 
 
 
@@ -98,3 +98,37 @@ class ArticulosByArchivoViews(YearArchiveView):
             return models.Articulo.objects.filter(creacion__year=year, creacion__month=month, publicado=True)
         else:
             return super().get_queryset()
+
+## CREAR ARTICULO
+class ArticuloCreateView(CreateView):
+    model= models.Articulo
+    template_name= 'blog/forms/crear_articulo.html'
+    form_class= form.ArticuloForm
+
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+    
+    success_url = reverse_lazy('inicio')
+
+class ArticuloUpdateView(UpdateView):
+    model= models.Articulo
+    template_name= 'blog/forms/actualizar_articulo.html'
+    form_class= form.ArticuloForm
+    slug_field = 'slug'
+    slug_url_kwarg = 'articulo_slug'
+
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        articulo = self.object
+        return reverse('articulo', kwargs={'articulo_slug': articulo.slug})
+
+class ArticuloDeleteView(DeleteView):
+    model= models.Articulo
+    template_name= 'blog/forms/eliminar_articulo.html'
+    slug_field = 'slug'
+    slug_url_kwarg = 'articulo_slug'
+    success_url = reverse_lazy('inicio')

@@ -45,6 +45,16 @@
                 </div>
                 <!-- Blog Detail End -->
 
+                <!--  Start -->
+                <div class="bg-secondary" style="padding: 30px; margin-bottom: 30px;">
+                    <a class="btn btn-dark" href={% url 'inicio' %}>Volver</a>
+                    {% if request.user == articulo.autor %}
+                        <a class="btn btn-dark" href={% url 'actualizar_articulo' articulo_slug=articulo.slug %}>Editar</a>
+                        <a class="btn btn-dark" href={% url 'eliminar_articulo' articulo_slug=articulo.slug  %}>Eliminar</a>
+                    {% endif %}
+                </div>
+                <!--  End -->
+
                 <!-- Comment List Start -->
                 <div class="bg-secondary" style="padding: 30px; margin-bottom: 30px;">
                     <h3 class="mb-4">3 Comments</h3>
