@@ -6,14 +6,10 @@ urlpatterns = [
     path('', views.InicioView.as_view(), name='inicio'),
 
     path('about/', views.About.as_view(), name='about'),
-
     path('contacto/', views.Contacto.as_view(), name='contacto'),
 
     path('articulo/<slug:articulo_slug>/',
          views.ArticuloDetailView.as_view(), name='articulo'),
-    
-     # path('articulo/<slug:articulo_slug>/',
-     #     views.ArticuloMin.as_view(), name='articulo_'),
 
     path('categoria/<slug:categoria_slug>/',
          views.ArticulosByCategoriaView.as_view(), name='categoria'),
@@ -21,13 +17,19 @@ urlpatterns = [
     path('autor/<str:autor>/', views.ArticulosByAutorView.as_view(), name='autor'),
 
     path('archivo/<int:year>/<int:month>',
-         views.ArticulosByArchivoViews.as_view(), name='archivo'),
+         views.ArticulosByArchivoView.as_view(), name='archivo'),
 
-    ## CRUD STAR ##
-    path('crear_articulo/', views.ArticuloCreateView.as_view(), name='crear_articulo'),
-    
-    path('actualizar_articulo/<slug:articulo_slug>/', views.ArticuloUpdateView.as_view(), name='actualizar_articulo'),
+    path('crear_articulo/', views.ArticuloCreateView.as_view(),
+         name='crear_articulo'),
 
-    path('eliminar_articulo/<slug:articulo_slug>/', views.ArticuloDeleteView.as_view(), name='eliminar_articulo'),
-    ## CRUD END ##
+    path('actualizar_articulo/<slug:articulo_slug>',
+         views.ArticuloUpdateView.as_view(), name='actualizar_articulo'),
+
+    path('eliminar_articulo/<slug:articulo_slug>',
+         views.ArticuloDeleteView.as_view(), name='eliminar_articulo'),
+
+     path('signup/', views.SignUpView.as_view(), name='signup'),
+
+     path('confirmacion/<str:code>/<str:user>/', views.ConfirmationView.as_view(), name='confirmacion')
+
 ]

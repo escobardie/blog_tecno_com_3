@@ -92,7 +92,7 @@ class Articulo(models.Model):
     slug = models.SlugField()
     bajada = models.CharField(max_length=150, verbose_name='Bajada')
     contenido = RichTextField(verbose_name='Contenido')
-    imagen = models.ImageField(upload_to='blog/articulos/imagenes', null=True, blank=True, verbose_name='Imagen')
+    imagen = models.ImageField(upload_to='blog/articulos/imagenes', null=True, blank=True, verbose_name='Imagen') #, default='static/post_default.png')
     publicado = models.BooleanField(default=False, verbose_name='Publicado')
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, related_name='get_articulos',null=True, blank=True, verbose_name='Categoría')
     autor = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='get_articulos', null=True, blank=True, verbose_name='Autor')

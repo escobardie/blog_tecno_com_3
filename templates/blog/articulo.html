@@ -48,7 +48,7 @@
                 <!--  Start -->
                 <div class="bg-secondary" style="padding: 30px; margin-bottom: 30px;">
                     <a class="btn btn-dark" href={% url 'inicio' %}>Volver</a>
-                    {% if request.user == articulo.autor %}
+                    {% if request.user == articulo.autor  or request.user.is_superuser%}
                         <a class="btn btn-dark" href={% url 'actualizar_articulo' articulo_slug=articulo.slug %}>Editar</a>
                         <a class="btn btn-dark" href={% url 'eliminar_articulo' articulo_slug=articulo.slug  %}>Eliminar</a>
                     {% endif %}
