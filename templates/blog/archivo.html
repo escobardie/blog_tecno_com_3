@@ -37,7 +37,7 @@
                         <div class="col-md-12 mb-3">
                             <div class="bg-secondary mb-3" style="padding: 30px;">
                                 <h4 class="font-weight-bold mb-3">Todos los Posts publicados en:  </h4>
-                                <p>{{articulos}}</p>
+                                <p> {{ articulo_fecha.creacion|date:'F Y'|capfirst }}</p>
                             </div>
                         </div>
                     {% else %}
