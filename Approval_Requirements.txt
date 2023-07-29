@@ -8,19 +8,19 @@ Debe haber 3 tipos de perfil (además del superadmin otorgado por Django):
 - [ ] COLABORADOR (tambien es usuario registrado)
 
 **VISITANTE** podrá:
-- [ ] NAVEGAR por el blog
-- [ ] FILTRAR articulos (posteos)
-- [ ] LEER artículos (posteos)
-- [ ] REGISTRARSE y loguearse ( convertirse en miembro o usuario registrado)
+- [X] NAVEGAR por el blog
+- [X] FILTRAR articulos (posteos)
+- [X] LEER artículos (posteos)
+- [X] REGISTRARSE y loguearse ( convertirse en miembro o usuario registrado)
 
 **MIEMBRO** podrá (Ademas de lo que hace el VISITANTE):
 - [ ] COMENTAR artículos
-- [ ] EDITAR o eliminar sus propios comentarios
-- [ ] Desloguearse
+- [X] EDITAR o eliminar sus propios comentarios
+- [X] Desloguearse
 
 **COLABORADOR** podrá (Ademas de lo que hace el MIEMBRO):
-- [ ] CREAR, Editar y Eliminar artículos, fotos y comentarios asociados a los articulos
-- [ ] CATEGORIZAR artículos (asignar categoria)
+- [X] CREAR, Editar y Eliminar artículos, fotos y comentarios asociados a los articulos
+- [X] CATEGORIZAR artículos (asignar categoria)
 
 
 APLICACION WEB tipo BLOG:
@@ -29,8 +29,8 @@ Debe contener las siguientes secciones (o equivalentes):
 
 - **INICIO** (o Portada):
 - [ ] Mostrar selección de publicaciones mas recientes o destacadas.
-- [ ] Proporcionar visión general del contenido del blog
-- [ ] Permitir a visitantes explorar fácilmente las ultimas actualizaciones.
+- [X] Proporcionar visión general del contenido del blog
+- [X] Permitir a visitantes explorar fácilmente las ultimas actualizaciones.
 
 - **CATEGORIAS:** Se debe dividir el contenido del blog en categorías temáticas claras y organizadas.
 
@@ -40,20 +40,20 @@ Debe contener las siguientes secciones (o equivalentes):
 
 - **CONTACTO:** Debe ofrecer a los visitantes una forma de ponerse en contacto con el equipo que administra el blog:
 A través de:
-- [ ] formulario de contacto
-- [ ] dirección de correo electrónico del grupo
+- [X] formulario de contacto
+- [X] dirección de correo electrónico del grupo
 - [ ] redes sociales del grupo
 
 IMPORTANTE: Las secciones anteriormente propuestas son consideradas requisito mínimo, Se pueden agregar mas secciones si el equipo de desarrolladores desea.
 
 **FUNCIONES**
 -
-- [ ] Registrarse, loguearse, desloguearse.
+- [X] Registrarse, loguearse, desloguearse.
 
-- [ ] ARTICULOS: Crear, Leer, Editar, Eliminar
+- [X] ARTICULOS: Crear, Leer, Editar, Eliminar
 - [ ] COMENTARIOS: Crear, Leer, Editar, Eliminar
 
 FILTRAR ARTICULOS por:
-- [ ] Categoría.
+- [X] Categoría.
 - [ ] Antigüedad (ascendente y descendente)
 - [ ] Orden alfabético (ascendente y descendente)
