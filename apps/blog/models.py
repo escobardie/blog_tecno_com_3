@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
+from django.conf import settings 
 
 ###########################
 ##### Modelo Acerca de ####
@@ -116,3 +117,17 @@ class Articulo(models.Model):
 
     def __str__(self):
         return self.titulo
+
+
+##########################
+#### Modelo Comentario ###
+##########################
+class Comentario(models.Model):
+    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, related_name='comentarios')
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comentarios')
+    texto = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.texto
+    

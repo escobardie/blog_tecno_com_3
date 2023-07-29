@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Articulo
+from .models import Articulo, Comentario
 
 
 class ArticuloForm(forms.ModelForm):
@@ -56,3 +56,8 @@ class RegisterUserForm(UserCreationForm):
             User.objects.filter(email = email_recibido).delete()
 
         return email_recibido
+
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['texto']

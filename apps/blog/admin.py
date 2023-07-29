@@ -5,6 +5,7 @@ admin.site.site_header = 'Administración del Blog'
 admin.site.index_title = 'Panel de Control'
 admin.site.site_title = 'Blog'
 
+admin.site.register(models.Comentario)
 
 ################
 #### Acerca ####
@@ -69,3 +70,4 @@ class ArticuloAdmin(admin.ModelAdmin):
     articuloEtiquetas.short_description = 'Etiquetas'
 
 admin.site.register(models.Articulo, ArticuloAdmin)
+

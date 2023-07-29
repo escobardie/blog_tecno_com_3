@@ -16,6 +16,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.dates import YearArchiveView
 from . import models, forms
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class NotFoundView(TemplateView):
@@ -55,6 +56,29 @@ class ArticuloDetailView(DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'articulo_slug'
 
+    ################################
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['form'] = forms.ComentarioForm() 
+        context['comentarios'] = models.Comentario.objects.filter(articulo_id=1)
+        return context
+    
+    def post(self, request, *args, **kwargs):
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.usuario = request.user
+            comentario.articulo_id = self.kwargs['articulo_slug']
+            comentario.save()
+            return redirect('articulo', id=self.kwargs['articulo_slug'])
+        else:
+            context = self.get_context_data(**kwargs)
+            context['form'] = form
+            return self.render_to_response(context)
+
+    ################################
+
 
 class ArticulosByCategoriaView(ListView):
     model = models.Categoria
@@ -68,10 +92,8 @@ class ArticulosByCategoriaView(ListView):
         return models.Articulo.objects.filter(categoria=categoria, publicado=True)
 
     def get_context_data(self, **kwargs):
-        context = super(ArticulosByCategoriaView,
-                        self).get_context_data(**kwargs)
-        context['categoria'] = models.Categoria.objects.get(
-            slug=self.kwargs['categoria_slug'])
+        context = super(ArticulosByCategoriaView,self).get_context_data(**kwargs)
+        context['categoria'] = models.Categoria.objects.get(slug=self.kwargs['categoria_slug'])
         return context
 
 
@@ -234,3 +256,15 @@ class ConfirmationView(View):
             messages.error(request, "El enlace de confirmación es inválido.")
 
         return redirect('login')  # Redirigir a la página de inicio de sesión o donde desees
+
+
+class ComentarioCreateView(LoginRequiredMixin, CreateView):
+    model = models.Comentario
+    form_class = forms.ComentarioForm
+    template_name = 'comentario/agregarComentario.html'
+    success_url = 'comentario/comentarios'
+
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        form.instance.articulo_id = self.kwargs['articulo_id']
+        return super().form_valid(form)
