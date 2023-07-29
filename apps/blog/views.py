@@ -34,9 +34,9 @@ class About(TemplateView):
     template_name = "blog/about.html"
     context_object_name = 'about'
 
-class Contacto(TemplateView):
-    template_name = "blog/contacto.html"
-    context_object_name = 'contacto'
+# class Contacto(TemplateView):
+#     template_name = "blog/contacto.html"
+#     context_object_name = 'contacto'
 
 ################################################################
 # class ArticuloMin(ListView):

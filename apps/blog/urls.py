@@ -1,13 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
 urlpatterns = [
     path('', views.InicioView.as_view(), name='inicio'),
-
+###############################
     path('about/', views.About.as_view(), name='about'),
-    path('contacto/', views.Contacto.as_view(), name='contacto'),
-
+    # path('contacto/', views.Contacto.as_view(), name='contacto'),
+###############################
     path('articulo/<slug:articulo_slug>/',
          views.ArticuloDetailView.as_view(), name='articulo'),
 
