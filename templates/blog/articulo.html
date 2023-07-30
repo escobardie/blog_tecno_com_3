@@ -55,37 +55,37 @@
                 </div>
                 <!--  End -->
 
-                <!-- Comment List Start -->
-                <div class="bg-secondary" style="padding: 30px; margin-bottom: 30px;">
-                        <h3 class="mb-4">** Comments</h3>
-                        {% for comentario in comentarios%}
-                        <div class="media mb-4">
-                            
-                            <img src={% static 'blog_plantilla/img/user.jpg' %} alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                            <div class="media-body">
-                                <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                <p> {{ comentario.texto }} </p>
-                            </div>
-                        {% empty %}
-                            <h3 class="mb-4">Sin Comentarios.</h3>
-                        {% endfor %}
-                        </div>
-                </div>
+
                 <!-- Comment List End -->
+                <div class="bg-secondary" style="padding: 30px; margin-bottom: 30px;">
+                    <h3 class="mb-4">Comentarios:</h3>
+
+                    {% for comentario in comentarios%}
+                    <div class="media mb-4">
+                        <img src={% static 'blog_plantilla/img/user.jpg' %} alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                        <div class="media-body">
+                            <h6><a href="">{{comentario.usuario}}</a> <small><i>{{comentario.fecha}}</i></small></h6>
+                            <p>{{ comentario.texto }}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <h3 class="mb-4">Sin Comentarios.</h3>
+                    {% endfor %}
+                </div>
 
                 <!-- Comment Form Start -->
                 <div class="bg-secondary mb-3" style="padding: 30px;">
                     <form method="POST">
                         {% csrf_token %}
                         {% if user.is_authenticated %}
-                            <h3 class="mb-4">deja tu comentario</h3>
+                            <h3 class="mb-4">Deja tu comentario</h3>
                             <form method="POST">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <input type="submit" value="Comentar">
                             </form>
                         {% else %}
-                            <h3>debe iniciar sesion o registrarse para comentar</h3>
+                            <h4>Debe iniciar sesion o registrarse para comentar</h4>
                         {% endif %}
                     </form>
                 </div>

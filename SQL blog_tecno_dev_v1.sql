@@ -20,3 +20,5 @@ DROP USER 'user1'@'localhost';
 
 
 SHOW TABLES;
+
+select * from blog_comentario;

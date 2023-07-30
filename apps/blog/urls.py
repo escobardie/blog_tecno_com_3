@@ -8,8 +8,10 @@ urlpatterns = [
     path('about/', views.About.as_view(), name='about'),
     # path('contacto/', views.Contacto.as_view(), name='contacto'),
 ###############################
-    path('articulo/<slug:articulo_slug>/',
+path('articulo/<slug:articulo_slug>/<int:art>',
          views.ArticuloDetailView.as_view(), name='articulo'),
+#     path('articulo/<slug:articulo_slug>/', # original
+#          views.ArticuloDetailView.as_view(), name='articulo'),
 
     path('categoria/<slug:categoria_slug>/',
          views.ArticulosByCategoriaView.as_view(), name='categoria'),

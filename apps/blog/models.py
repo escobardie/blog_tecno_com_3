@@ -123,11 +123,17 @@ class Articulo(models.Model):
 #### Modelo Comentario ###
 ##########################
 class Comentario(models.Model):
+    # articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, related_name='comentarios') # ORIGINAL
     articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, related_name='comentarios')
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comentarios')
     texto = models.TextField()
     fecha = models.DateTimeField(auto_now_add=True)
-
+###########################
+    class Meta:
+        verbose_name='Comentario'
+        verbose_name_plural='Comentarios'
+        ordering = ['articulo']
+###########################
     def __str__(self):
         return self.texto
     

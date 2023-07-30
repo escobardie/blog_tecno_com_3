@@ -14,7 +14,7 @@ Debe haber 3 tipos de perfil (además del superadmin otorgado por Django):
 - [X] REGISTRARSE y loguearse ( convertirse en miembro o usuario registrado)
 
 **MIEMBRO** podrá (Ademas de lo que hace el VISITANTE):
-- [ ] COMENTAR artículos
+- [X] COMENTAR artículos
 - [X] EDITAR o eliminar sus propios comentarios
 - [X] Desloguearse
 
@@ -28,7 +28,7 @@ APLICACION WEB tipo BLOG:
 Debe contener las siguientes secciones (o equivalentes):
 
 - **INICIO** (o Portada):
-- [ ] Mostrar selección de publicaciones mas recientes o destacadas.
+- [X] Mostrar selección de publicaciones mas recientes o destacadas.
 - [X] Proporcionar visión general del contenido del blog
 - [X] Permitir a visitantes explorar fácilmente las ultimas actualizaciones.
 
@@ -42,7 +42,7 @@ Debe contener las siguientes secciones (o equivalentes):
 A través de:
 - [X] formulario de contacto
 - [X] dirección de correo electrónico del grupo
-- [ ] redes sociales del grupo
+- [X] redes sociales del grupo
 
 IMPORTANTE: Las secciones anteriormente propuestas son consideradas requisito mínimo, Se pueden agregar mas secciones si el equipo de desarrolladores desea.
 

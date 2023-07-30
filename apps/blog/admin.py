@@ -5,7 +5,15 @@ admin.site.site_header = 'Administración del Blog'
 admin.site.index_title = 'Panel de Control'
 admin.site.site_title = 'Blog'
 
-admin.site.register(models.Comentario)
+####################
+#### Comentario ####
+####################
+class ComentarioAdmin(admin.ModelAdmin):
+    readonly_fields = ('fecha','articulo','usuario','texto')
+    list_display = ('articulo','usuario','fecha','texto')
+
+admin.site.register(models.Comentario, ComentarioAdmin)
+# admin.site.register(models.Comentario) # original
 
 ################
 #### Acerca ####

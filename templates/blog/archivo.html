@@ -71,7 +71,7 @@
                                 </div>
                                 <h4 class="font-weight-bold mb-3">{{ articulo.titulo }}</h4>
                                 <p>{{ articulo.bajada }}</p>
-                                <a class="border-bottom border-primary text-uppercase text-decoration-none" href={% url 'articulo' articulo_slug=articulo.slug %}>Seguir leyendo.. <i class="fa fa-angle-right"></i></a>
+                                <a class="border-bottom border-primary text-uppercase text-decoration-none" href={% url 'articulo' articulo_slug=articulo.slug art=articulo.id %}>Seguir leyendo.. <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
 

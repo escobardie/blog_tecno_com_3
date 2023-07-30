@@ -22,7 +22,7 @@
 
                     {{ form.as_p }}
 
-                    <a class="btn btn-dark" href={% url 'articulo' articulo_slug=articulo.slug %}> Cancelar</a>
+                    <a class="btn btn-dark" href={% url 'articulo' articulo_slug=articulo.slug art=articulo.id %}> Cancelar</a>
                     <input class="btn btn-dark" type="submit" value="Actualizar Articulo">
                 </form>
             </div>

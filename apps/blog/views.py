@@ -53,25 +53,32 @@ class ArticuloDetailView(DetailView):
     model = models.Articulo
     template_name = 'blog/articulo.html'
     context_object_name = 'articulo'
+    # pk_url_kwarg = 'id'
     slug_field = 'slug'
     slug_url_kwarg = 'articulo_slug'
 
     ################################
     def get_context_data(self, **kwargs):
-
+        art = self.kwargs['art']
         context = super().get_context_data(**kwargs)
         context['form'] = forms.ComentarioForm() 
-        context['comentarios'] = models.Comentario.objects.filter(articulo_id=1)
+        #context['comentarios'] = models.Comentario.objects.filter(slug=self.kwargs['articulo_slug'])
+        context['comentarios'] = models.Comentario.objects.filter(articulo_id=art)
         return context
     
+    
+    
     def post(self, request, *args, **kwargs):
-        form = ComentarioForm(request.POST)
+        art = self.kwargs['art']
+        art_slug = self.kwargs['articulo_slug']
+        form = forms.ComentarioForm(request.POST)
         if form.is_valid():
             comentario = form.save(commit=False)
             comentario.usuario = request.user
-            comentario.articulo_id = self.kwargs['articulo_slug']
+            comentario.articulo_id = art
             comentario.save()
-            return redirect('articulo', id=self.kwargs['articulo_slug'])
+            # return redirect('inicio')
+            return redirect('articulo', articulo_slug=art_slug, art=art)
         else:
             context = self.get_context_data(**kwargs)
             context['form'] = form
@@ -180,7 +187,8 @@ class ArticuloUpdateView(UpdateView):
         # Obtiene el artículo actualizado desde el contexto
         articulo = self.object
         # Genera la URL para la vista 'articulo' usando el slug actualizado del artículo
-        return reverse('articulo', kwargs={'articulo_slug': articulo.slug})
+        return reverse('articulo', kwargs={'articulo_slug': articulo.slug, 'art':art})
+        # return redirect('articulo', articulo_slug=art_slug, art=art) #REFERENCIA
 
 
 @method_decorator(user_passes_test(usuario_es_colaborador, login_url='login'), name='dispatch')
@@ -261,8 +269,10 @@ class ConfirmationView(View):
 class ComentarioCreateView(LoginRequiredMixin, CreateView):
     model = models.Comentario
     form_class = forms.ComentarioForm
-    template_name = 'comentario/agregarComentario.html'
-    success_url = 'comentario/comentarios'
+    template_name = 'blog/articulo.html'
+    #template_name = 'comentario/agregarComentario.html' # original
+    # success_url = 'comentario/comentarios'
+    success_url = reverse_lazy('inicio')
 
     def form_valid(self, form):
         form.instance.usuario = self.request.user
