@@ -187,8 +187,8 @@ class ArticuloUpdateView(UpdateView):
         # Obtiene el artículo actualizado desde el contexto
         articulo = self.object
         # Genera la URL para la vista 'articulo' usando el slug actualizado del artículo
-        return reverse('articulo', kwargs={'articulo_slug': articulo.slug, 'art':art})
-        # return redirect('articulo', articulo_slug=art_slug, art=art) #REFERENCIA
+        return reverse('articulo', kwargs={'articulo_slug': articulo.slug,  'art':articulo.id})
+
 
 
 @method_decorator(user_passes_test(usuario_es_colaborador, login_url='login'), name='dispatch')
