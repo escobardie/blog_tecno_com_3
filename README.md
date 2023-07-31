@@ -1,4 +1,4 @@
-# GOSBASTER
+# Ghostbuster
 _EQUIPO: **GHOSTBUSTER**, grupo que se creo aleatriamente por cuestiones universales....._
 #### Un proyecto grupal
 ```

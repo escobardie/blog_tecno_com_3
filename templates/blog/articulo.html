@@ -85,7 +85,8 @@
                                 <input type="submit" value="Comentar">
                             </form>
                         {% else %}
-                            <h4>Debe iniciar sesion o registrarse para comentar</h4>
+                        
+                            <h4>Debe <a href={% url 'login' %}>iniciar sesion</a> o <a href={% url 'signup' %}>registrarse</a> para comentar</h4>
                         {% endif %}
                     </form>
                 </div>
