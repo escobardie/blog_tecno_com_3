@@ -38,9 +38,9 @@
             <div class="row py-2 px-lg-5">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center text-white">
-                        <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                        <small><i class="fa fa-phone-alt mr-2"></i>+54 362 4078790</small>
                         <small class="px-3">|</small>
-                        <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                        <small><i class="fa fa-envelope mr-2"></i>Informatorio2023@gmail.com</small>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -64,7 +64,7 @@
                     <!--  ORIGINAL
                     <h1 class="m-0 display-5 text-uppercase text-primary"><i class="fa fa-newspaper mr-2"></i>Blog</h1>
                     -->
-                    <h1 class="m-0 display-5 text-uppercase text-primary"> <img src={% static 'ghost.png' %} style="width: 50px; height: 50px;">Blog</h1>
+                    <h1 class="m-0 display-5 text-uppercase text-primary"> <img src={% static 'ghost.png' %} style="width: 50px; height: 50px;">BLOGIA</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -133,9 +133,9 @@
                 <div class="row">
                     <div class="col-md-6 mb-5">
                         <h3 class="text-primary mb-4">Contactanos</h3>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>Resistencia, Chaco, Argentina</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Chaco, Argentina</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+54 362 4078790</p>
+                        <p><i class="fa fa-envelope mr-2"></i>Informatorio2023@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
                             {% for red in redes %}
                                 {% if red.url %}
@@ -150,7 +150,7 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-white mb-2" href={% url 'inicio' %}><i class="fa fa-angle-right mr-2"></i>Blog</a>
                             <a class="text-white mb-2" href={% url 'about' %}><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
-                            <a class="text-white mb-2" href={% url 'about' %}><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                            <a class="text-white mb-2" href={% url 'contacto' %}><i class="fa fa-angle-right mr-2"></i>Contacto</a>
                             {%if request.user.is_authenticated %}
                             <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Hola @{{ request.user.username | title }}</a>
                             {% else %}
