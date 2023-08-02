@@ -22,6 +22,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class NotFoundView(TemplateView):
     template_name = "blog/404.html"
 
+class InfoView(TemplateView):
+    template_name = "blog/info.html"
+    context_object_name = 'info'
 
 class InicioView(ListView):
     model: models.Articulo

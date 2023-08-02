@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.InicioView.as_view(), name='inicio'),
 ###############################
     path('about/', views.About.as_view(), name='about'),
+    path('info/', views.InfoView.as_view(), name='info'),
     # path('contacto/', views.Contacto.as_view(), name='contacto'),
 ###############################
 path('articulo/<slug:articulo_slug>/<int:art>',
