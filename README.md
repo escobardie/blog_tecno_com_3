@@ -12,7 +12,7 @@ _EQUIPO: **GHOSTBUSTER**, grupo que se creo aleatriamente por cuestiones univers
                 ESCOBAR DIEGO
                 @abbacibertech
                 Cruz Alejandro
-                EL CUERTO*
+                Matias Del Fabro 
 
 ***Genero:*** WEP
 ```
