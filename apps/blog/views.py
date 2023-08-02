@@ -35,17 +35,13 @@ class About(TemplateView):
     template_name = "blog/about.html"
     context_object_name = 'about'
 
-# class Contacto(TemplateView):
-#     template_name = "blog/contacto.html"
-#     context_object_name = 'contacto'
-
 ################################################################
-# class ArticuloMin(ListView):
-#     model = models.Articulo
-#     template_name = 'blog/inicio.html'
-#     context_object_name = 'articulos'
-#     paginate_by = 3
-#     queryset = models.Articulo.objects.filter(publicado=True)
+class BusquedaListView(ListView):
+    model: models.Articulo
+    template_name = 'blog/inicio.html'
+    context_object_name = 'articulos'
+    paginate_by = 3
+    queryset = models.Articulo.objects.filter(titulo='PROBANDO')
 ################################################################
 
 
