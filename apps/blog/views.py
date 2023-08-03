@@ -18,6 +18,56 @@ from django.views.generic.dates import YearArchiveView
 from . import models, forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+#####################
+from django.db.models import Q
+#####################
+
+
+def buscar_articulo(request):
+    ## https://www.youtube.com/watch?v=Nz5F60OxOKI&ab_channel=CodingEntrepreneurs
+    ## https://www.youtube.com/watch?v=ELbE2VPOkOw&ab_channel=JuanJos%C3%A9VillaAlzate
+    # print(dir(request))
+    print(request.GET)
+    querey_dict = request.GET # ESTO ES UN DICCIONARIO
+    query = querey_dict.get("buscar") # this <input type="text" .... name= 'buscar'>
+    print("PRIMERO "+query)
+    # try:
+    #     query = querey_dict.get("buscar")
+    #     print("ENTRO POR AQUI "+query)
+    # except:
+    #     query = None
+    #     print("ENTRO AQUI "+query)
+    query = querey_dict.get("buscar")
+    print("ENTRO POR AQUI "+query)
+    articulo_obj = None
+    if query:
+        print("AQUI ")
+        articulo = models.Articulo.objects.filter(
+            Q(titulo__icontains = query) |
+            Q(bajada__icontains = query) |
+            Q(contenido__icontains = query)
+        ).distinct()
+    return render(request, 'blog/inicio.html', {'articulos': articulo})
+    # if query is not None:
+    #     print("ENTRO AQUI "+query)
+    #     # atriculo_obj = odels.Articulo.objects.get(articulo_id=query) # original
+    #     articulo_obj = models.Articulo.objects.get(titulo=query)
+    #     # print("titulo: "+articulo_obj.titulo)
+    # context = {
+    #     "object": articulo_obj
+    # }
+    # return render(request, 'search.html', context = context)
+    
+    # buscar = request.GET.get("buscar")
+    # articulo = models.Articulo.objects.all()
+    # if buscar:
+    #     articulo = models.Articulo.objects.filter(
+    #         Q(titulo__icontains = buscar) |
+    #         Q(bajada__icontains = buscar) |
+    #         Q(contenido__icontains = buscar)
+    #     ).distinct()
+    # return render(request, 'blog/inicio.html', {'articulo':articulo})
+
 
 class NotFoundView(TemplateView):
     template_name = "blog/404.html"
@@ -31,7 +81,10 @@ class InicioView(ListView):
     template_name = 'blog/inicio.html'
     context_object_name = 'articulos'
     paginate_by = 3
-    queryset = models.Articulo.objects.filter(publicado=True)
+    queryset = models.Articulo.objects.filter(publicado=True) # ORIGINAL
+    ###################### probando
+
+    ###################### probando
 
 ################################################################
 class About(TemplateView):
@@ -39,12 +92,7 @@ class About(TemplateView):
     context_object_name = 'about'
 
 ################################################################
-class BusquedaListView(ListView):
-    model: models.Articulo
-    template_name = 'blog/inicio.html'
-    context_object_name = 'articulos'
-    paginate_by = 3
-    queryset = models.Articulo.objects.filter(titulo='PROBANDO')
+
 ################################################################
 
 
@@ -56,7 +104,7 @@ class ArticuloDetailView(DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'articulo_slug'
 
-    ################################
+    
     def get_context_data(self, **kwargs):
         art = self.kwargs['art']
         context = super().get_context_data(**kwargs)
@@ -95,6 +143,7 @@ class ArticulosByCategoriaView(ListView):
     def get_queryset(self):
         categoria_slug = self.kwargs['categoria_slug']
         categoria = get_object_or_404(models.Categoria, slug=categoria_slug)
+
         return models.Articulo.objects.filter(categoria=categoria, publicado=True)
 
     def get_context_data(self, **kwargs):

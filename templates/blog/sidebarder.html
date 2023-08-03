@@ -4,15 +4,17 @@
             <div class="col-lg-4 mt-5 mt-lg-0">
                 <!-- Search Form Start -->
                 <div class="mb-5">
-                    <div class="bg-secondary" style="padding: 30px;">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-0 p-4" placeholder="Articulo">
-                            <div class="input-group-append">
-                                <span class="input-group-text bg-primary border-primary text-white"><i
-                                        class="fa fa-search"></i></span>
+                    <form action='/articulo/' method="GET">
+                        <div class="bg-secondary" style="padding: 30px;">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-0 p-4" placeholder="Buscar.." name= 'buscar'>
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary px-3"><i
+                                        class="fa fa-search"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- Search Form End -->
 
