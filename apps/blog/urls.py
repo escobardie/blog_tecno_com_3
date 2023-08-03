@@ -3,13 +3,16 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.InicioView.as_view(), name='inicio'),
+    path('', views.InicioView.as_view(), name='inicio'), # ORIGINAL
+############################### PROBANDO
+    # path('', views.buscar_articulo, name='buscar'),
+    path('articulo/',views.buscar_articulo),
 ###############################
     path('about/', views.About.as_view(), name='about'),
     path('info/', views.InfoView.as_view(), name='info'),
     # path('contacto/', views.Contacto.as_view(), name='contacto'),
 ###############################
-path('articulo/<slug:articulo_slug>/<int:art>',
+     path('articulo/<slug:articulo_slug>/<int:art>',
          views.ArticuloDetailView.as_view(), name='articulo'),
 #     path('articulo/<slug:articulo_slug>/', # original
 #          views.ArticuloDetailView.as_view(), name='articulo'),
