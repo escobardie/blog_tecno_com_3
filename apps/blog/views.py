@@ -29,7 +29,7 @@ def buscar_articulo(request):
     # print(dir(request))
     # print(request.GET)
     querey_dict = request.GET # ESTO ES UN DICCIONARIO
-    query = querey_dict.get("buscar") # this <input type="text" .... name= 'buscar'>
+    #query = querey_dict.get("buscar") # this <input type="text" .... name= 'buscar'>
     # print("PRIMERO "+query)
     # try:
     #     query = querey_dict.get("buscar")
@@ -40,8 +40,9 @@ def buscar_articulo(request):
     query = querey_dict.get("buscar")
     # print("ENTRO POR AQUI "+query)
     
-    if query:
-        # print("AQUI ")
+    if query == "":
+         return render(request, 'blog/inicio.html', {'articulos': query})
+    else:
         articulo = models.Articulo.objects.filter(
             Q(titulo__icontains = query) |
             Q(bajada__icontains = query) |
