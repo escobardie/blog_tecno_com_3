@@ -27,10 +27,10 @@ def buscar_articulo(request):
     ## https://www.youtube.com/watch?v=Nz5F60OxOKI&ab_channel=CodingEntrepreneurs
     ## https://www.youtube.com/watch?v=ELbE2VPOkOw&ab_channel=JuanJos%C3%A9VillaAlzate
     # print(dir(request))
-    print(request.GET)
+    # print(request.GET)
     querey_dict = request.GET # ESTO ES UN DICCIONARIO
     query = querey_dict.get("buscar") # this <input type="text" .... name= 'buscar'>
-    print("PRIMERO "+query)
+    # print("PRIMERO "+query)
     # try:
     #     query = querey_dict.get("buscar")
     #     print("ENTRO POR AQUI "+query)
@@ -38,10 +38,10 @@ def buscar_articulo(request):
     #     query = None
     #     print("ENTRO AQUI "+query)
     query = querey_dict.get("buscar")
-    print("ENTRO POR AQUI "+query)
-    articulo_obj = None
+    # print("ENTRO POR AQUI "+query)
+    
     if query:
-        print("AQUI ")
+        # print("AQUI ")
         articulo = models.Articulo.objects.filter(
             Q(titulo__icontains = query) |
             Q(bajada__icontains = query) |
@@ -82,18 +82,11 @@ class InicioView(ListView):
     context_object_name = 'articulos'
     paginate_by = 3
     queryset = models.Articulo.objects.filter(publicado=True) # ORIGINAL
-    ###################### probando
 
-    ###################### probando
-
-################################################################
 class About(TemplateView):
     template_name = "blog/about.html"
     context_object_name = 'about'
 
-################################################################
-
-################################################################
 
 
 class ArticuloDetailView(DetailView):
@@ -103,7 +96,6 @@ class ArticuloDetailView(DetailView):
     # pk_url_kwarg = 'id'
     slug_field = 'slug'
     slug_url_kwarg = 'articulo_slug'
-
     
     def get_context_data(self, **kwargs):
         art = self.kwargs['art']
@@ -111,9 +103,7 @@ class ArticuloDetailView(DetailView):
         context['form'] = forms.ComentarioForm() 
         #context['comentarios'] = models.Comentario.objects.filter(slug=self.kwargs['articulo_slug'])
         context['comentarios'] = models.Comentario.objects.filter(articulo_id=art)
-        return context
-    
-    
+        return context    
     
     def post(self, request, *args, **kwargs):
         art = self.kwargs['art']
@@ -131,7 +121,7 @@ class ArticuloDetailView(DetailView):
             context['form'] = form
             return self.render_to_response(context)
 
-    ################################
+
 
 
 class ArticulosByCategoriaView(ListView):
