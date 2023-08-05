@@ -9,7 +9,10 @@ from django.conf import settings
 ###########################
 
 class Acerca(models.Model):
-    descripcion = models.CharField(max_length=450, verbose_name='Descripción')
+    # descripcion = models.CharField(max_length=450, verbose_name='Descripción') # ORIGINAL
+    ###############
+    descripcion = RichTextField(verbose_name='Descripción')
+    ###############
     creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     actualizacion = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualización')
 
