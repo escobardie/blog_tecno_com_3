@@ -34,16 +34,6 @@
                 </div>
                 <!-- Category End -->
 
-                <!-- Plain Text Start -->
-                <div class="mb-5">
-                    <h3 class="mb-4">Acerca de</h3>
-                    <div class="bg-secondary text-center" style="padding: 30px;">
-                        <p>{{ acerca }}</p>
-                        <!-- <a href="" class="btn btn-primary py-2 px-4">Read More</a> -->
-                    </div>
-                </div>
-                <!-- Plain Text End -->
-
                 <!-- ARCHIVOS Start -->
                 <div class="mb-5">
                     <h3 class="mb-4">Archivos</h3>
@@ -63,6 +53,17 @@
                     </div>
                 </div>
                 <!-- ARCHIVOS End -->
+
+                <!-- Plain Text Start -->
+                <div class="mb-5">
+                    <h3 class="mb-4">Acerca de</h3>
+                    <div class="bg-secondary text-center" style="padding: 30px;">
+                        <p>{{ acerca|safe }}</p>
+                        <!-- <a href="" class="btn btn-primary py-2 px-4">Read More</a> -->
+                    </div>
+                </div>
+                <!-- Plain Text End -->
+
 
             </div>
             <!-- Sidebar End -->
