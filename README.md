@@ -1,27 +1,76 @@
-# Ghostbuster
-_EQUIPO: **GHOSTBUSTER**, grupo que se creo aleatriamente por cuestiones universales....._
-#### Un proyecto grupal
-```
-***Engine:*** Visual Studio Code
+# Django NEWSLETTER
 
-***Lenguaje:*** PYTHON DJANGO HTML
+## Want to learn how to build this?
+## ¿Quieres aprender a construir esto?
 
-***Plataforma:*** PC
+## Want to use this project?
+## ¿Quieres usar este proyecto?
 
-***Developers:*** 
-                ESCOBAR DIEGO
-                @abbacibertech
-                Cruz Alejandro
-                Matias Del Fabro 
+1. Clone
+    CLONAR REPO
 
-***Genero:*** WEP
-```
+1. Create virtual environment:
+Crear entorno virtual:
 
-## Imagenes
+    ```sh
+    $ virtualenv venv
+    ```
 
-#![This is a alt text.](/GHOSTBUSTER.png "This is a sample image.")
+1. Activate the environment:
+Activar entorno
+    ```sh
+    $ .\venv\Scripts\activate  
+    ```
+
+1. Install the requirements:
+Instalar los requisitos:
+
+    ```sh
+    (venv)$ pip install -r requirements.txt
+    ```
+1. Create Database:
+Crear Base de Datos:
+
+    ```sh
+    crear archivo .env, teniendo de ejemplo .env.example
+    ```
+
+1. Create the migrations:
+Crear las migraciones:
+
+    ```sh
+    (venv)$ python manage.py makemigrations
+    ```
+
+1. Apply the migrations:
+Aplicar las migraciones:
+
+    ```sh
+    (venv)$ python manage.py migrate
+    ```
+
+1. Run the server:
+Ejecute el servidor:
+
+    ```sh
+    (venv)$ python manage.py runserver
+    ```
+1. Get into:
+Entramos en:
+    ```sh
+    http://127.0.0.1:8000/ 
+    ```
 
 
-## Links
+## BIBLIOTECA
+Se utilizo informacionde las siguientes paginas
 
-Perfil de Github [This is my profile](https://github.com/escobardie/blog_tecno_com_3).
+| BIBLIOTECA | LINK |
+| ------ | ------ |
+| Build a Newsletter | https://youtu.be/hWtlskOaFNI |
+| TIME DATE | https://docs.djangoproject.com/en/dev/ref/templates/builtins/#date |
+| README | https://dillinger.io/ |
+| Authentication | https://youtu.be/wB1qOExDsYY |
+| crispy forms | https://stackoverflow.com/questions/65238459/templatedoesnotexist-at-users-register-bootstrap5-uni-form-html |
+
+
