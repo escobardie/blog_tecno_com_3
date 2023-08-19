@@ -13,6 +13,8 @@ urlpatterns = [
 ############################
     path("",include('apps.contacto.urls')),
 ############################
+    path("",include('apps.letter.urls')),
+############################
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ]

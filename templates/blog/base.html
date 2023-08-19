@@ -30,6 +30,31 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href={% static 'blog_plantilla/css/style.css' %} rel="stylesheet">
+    <style>
+        html {
+          font-family: sans-serif;
+        }
+    
+        table {
+          border-collapse: collapse;
+          border: 2px solid rgb(200,200,200);
+          letter-spacing: 1px;
+          font-size: 0.8rem;
+        }
+    
+        td, th {
+          border: 1px solid rgb(190,190,190);
+          padding: 10px 20px;
+        }
+    
+        td {
+          text-align: center;
+        }
+    
+        caption {
+          padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,9 +63,9 @@
             <div class="row py-2 px-lg-5">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center text-white">
-                        <small><i class="fa fa-phone-alt mr-2"></i>+54 362 4078790</small>
+                        <small><i class="fa fa-phone-alt mr-2"></i>+54 362 4216225</small>
                         <small class="px-3">|</small>
-                        <small><i class="fa fa-envelope mr-2"></i>Informatorio2023@gmail.com</small>
+                        <small><i class="fa fa-envelope mr-2"></i>dev_escobardie@gmail.com</small>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
@@ -64,7 +89,7 @@
                     <!--  ORIGINAL
                     <h1 class="m-0 display-5 text-uppercase text-primary"><i class="fa fa-newspaper mr-2"></i>Blog</h1>
                     -->
-                    <h1 class="m-0 display-5 text-uppercase text-primary"> <img src={% static 'ghost.png' %} style="width: 50px; height: 50px;">BLOGIA</h1>
+                    <h1 class="m-0 display-5 text-uppercase text-primary"> <img src={% static 'ghost.png' %} style="width: 50px; height: 50px;">BLOG</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -83,6 +108,10 @@
                                 <div class="dropdown-menu rounded-0 m-0">
                                     {% if request.user.is_staff %}
                                         <a href={% url 'crear_articulo' %} class="dropdown-item">Crear Articulo</a>
+                                        <a href={% url 'suscripcion' %} class="dropdown-item">Suscribete</a>
+                                        <a href={% url 'lista_emails' %} class="dropdown-item">Lista Emails</a>
+                                        <a href={% url 'lista_boletin' %} class="dropdown-item">Lista Boletines</a>
+                                        <a href={% url 'create_letter' %} class="dropdown-item">Envio de Boletin</a>
                                     {% endif %}
                                         <a href="{% url 'logout' %}" class="dropdown-item">Salir</a>                
                                 </div>
@@ -103,8 +132,8 @@
         <!-- Header Start -->
         <div class="jumbotron jumbotron-fluid mb-5">
             <div class="container text-center py-5">
-                <h1 class="text-primary mb-4">TECNOLOGIA IA</h1>
-                <h1 class="text-white display-3 mb-5">Informatorio 2023</h1>
+                <h1 class="text-primary mb-4">NOTICIAS</h1>
+                <h1 class="text-white display-3 mb-5">CONTENIDO 2023</h1>
                 <div class="mx-auto" style="width: 100%; max-width: 600px;">
                     <form action='/articulo/' method="GET">
                         <div class="input-group">
@@ -150,9 +179,9 @@
                 <div class="row">
                     <div class="col-md-6 mb-5">
                         <h3 class="text-primary mb-4">Contactanos</h3>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>Chaco, Argentina</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+54 362 4078790</p>
-                        <p><i class="fa fa-envelope mr-2"></i>Informatorio2023@gmail.com</p>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Resistencia, Chaco, Argentina</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+54 362 4216225</p>
+                        <p><i class="fa fa-envelope mr-2"></i>dev_escobardie@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
                             {% for red in redes %}
                                 {% if red.url %}
