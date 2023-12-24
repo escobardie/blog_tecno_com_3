@@ -15,6 +15,8 @@ urlpatterns = [
 ############################
     path("",include('apps.letter.urls')),
 ############################
+    path("",include('apps.pokeapi.urls')),
+############################
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
