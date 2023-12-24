@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'apps.letter.apps.LetterConfig',
     'apps.blog',
     'apps.contacto',
+    'apps.pokeapi',
     'ckeditor',
 
     'crispy_forms',
